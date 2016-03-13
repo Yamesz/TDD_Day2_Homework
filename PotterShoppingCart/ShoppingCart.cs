@@ -15,6 +15,7 @@ namespace PotterShoppingCart
             int theChamberofSecretsCount = 0;
             int thePrisonerofAzkabanCount = 0;
             int theGobletofFireCount = 0;
+            int theOrderofthePhoenixCount = 0;
              
             foreach (var item in bookList)
             {
@@ -33,6 +34,10 @@ namespace PotterShoppingCart
                     case 9573318318://哈利波特 : 火盃的考驗
                         theGobletofFireCount++;
                         break;
+                    case 9573319861://哈利波特 : 鳳凰會的密令
+                        theOrderofthePhoenixCount++;
+                        break;
+                        
                         
                 }
 
@@ -44,25 +49,35 @@ namespace PotterShoppingCart
             if (thePhilosophersStoneCount > 0 
                 && theChamberofSecretsCount > 0
                 && thePrisonerofAzkabanCount == 0
-                && theGobletofFireCount == 0)
+                && theGobletofFireCount == 0
+                && theOrderofthePhoenixCount == 0)
             {
                 result = (int)(result * 0.95);
             }
             else if(thePhilosophersStoneCount > 0 
                     && theChamberofSecretsCount > 0
                     && thePrisonerofAzkabanCount > 0
-                    && theGobletofFireCount == 0)
+                    && theGobletofFireCount == 0
+                    && theOrderofthePhoenixCount == 0)
             {
                 result = (int)(result * 0.9);
             }
             else if(thePhilosophersStoneCount > 0 
                     && theChamberofSecretsCount > 0
                     && thePrisonerofAzkabanCount > 0
-                    && theGobletofFireCount > 0)
+                    && theGobletofFireCount > 0
+                    && theOrderofthePhoenixCount == 0)
             {
                 result = (int)(result * 0.8);
             }
-
+            else if(thePhilosophersStoneCount > 0 
+                    && theChamberofSecretsCount > 0
+                    && thePrisonerofAzkabanCount > 0
+                    && theGobletofFireCount > 0
+                    && theOrderofthePhoenixCount > 0)
+            {
+                result = (int)(result * 0.75);
+            }
             return result;
         }
     }
