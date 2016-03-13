@@ -15,14 +15,15 @@ namespace PotterShoppingCart.Tests
         {
             //Arrange
             var bookList = new List<Book>();
-            bookList.Add(new Book{
-                ISBN=9573317249,
-                Name="哈利波特 : 神秘的魔法石",
-                Price=100
+            bookList.Add(new Book
+            {
+                ISBN = 9573317249,
+                Name = "哈利波特 : 神秘的魔法石",
+                Price = 100
             });
             var expected = 100;
             var target = new ShoppingCart();
-   
+
             //Act
             int actual = target.SubtotalGet(bookList);
 
@@ -49,7 +50,7 @@ namespace PotterShoppingCart.Tests
 
             var expected = 190;
             var target = new ShoppingCart();
-   
+
             //Act
             int actual = target.SubtotalGet(bookList);
 
@@ -81,7 +82,7 @@ namespace PotterShoppingCart.Tests
 
             var expected = 270;
             var target = new ShoppingCart();
-   
+
             //Act
             int actual = target.SubtotalGet(bookList);
 
@@ -118,14 +119,14 @@ namespace PotterShoppingCart.Tests
 
             var expected = 320;
             var target = new ShoppingCart();
-   
+
             //Act
             int actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestMethod]
         public void 一二三四五集各買了一本_價格應為375()
         {
@@ -160,7 +161,46 @@ namespace PotterShoppingCart.Tests
 
             var expected = 375;
             var target = new ShoppingCart();
-   
+
+            //Act
+            int actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+        [TestMethod]
+        public void 一二集各買一本_第三集買兩本_價格應為270加100為370()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                new Book{
+                    ISBN=9573317249,
+                    Name="哈利波特 : 神秘的魔法石",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573317583,
+                    Name="哈利波特 : 消失的密室",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573318008,
+                    Name="哈利波特 : 阿茲卡班的逃犯",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573318008,
+                    Name="哈利波特 : 阿茲卡班的逃犯",
+                    Price=100
+                }          
+            };
+
+            var expected = 370;
+            var target = new ShoppingCart();
+
             //Act
             int actual = target.SubtotalGet(bookList);
 
