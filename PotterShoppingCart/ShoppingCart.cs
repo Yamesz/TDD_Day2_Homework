@@ -13,7 +13,8 @@ namespace PotterShoppingCart
             int result = 0;
             int thePhilosophersStoneCount = 0;
             int theChamberofSecretsCount = 0;
-            int thePrisonerofAzkaban = 0;
+            int thePrisonerofAzkabanCount = 0;
+            int theGobletofFireCount = 0;
              
             foreach (var item in bookList)
             {
@@ -26,9 +27,13 @@ namespace PotterShoppingCart
                     case 9573317583://哈利波特 : 消失的密室
                         theChamberofSecretsCount++;
                         break;
-                    case 9573318008://哈利波特 : 消失的密室
-                        thePrisonerofAzkaban++;
+                    case 9573318008://哈利波特 : 阿茲卡班的逃犯
+                        thePrisonerofAzkabanCount++;
                         break;
+                    case 9573318318://哈利波特 : 火盃的考驗
+                        theGobletofFireCount++;
+                        break;
+                        
                 }
 
                 //原價
@@ -38,17 +43,25 @@ namespace PotterShoppingCart
             //折扣條件
             if (thePhilosophersStoneCount > 0 
                 && theChamberofSecretsCount > 0
-                && thePrisonerofAzkaban == 0)
+                && thePrisonerofAzkabanCount == 0
+                && theGobletofFireCount == 0)
             {
                 result = (int)(result * 0.95);
             }
             else if(thePhilosophersStoneCount > 0 
                     && theChamberofSecretsCount > 0
-                    && thePrisonerofAzkaban > 0)
+                    && thePrisonerofAzkabanCount > 0
+                    && theGobletofFireCount == 0)
             {
                 result = (int)(result * 0.9);
             }
-
+            else if(thePhilosophersStoneCount > 0 
+                    && theChamberofSecretsCount > 0
+                    && thePrisonerofAzkabanCount > 0
+                    && theGobletofFireCount > 0)
+            {
+                result = (int)(result * 0.8);
+            }
 
             return result;
         }
