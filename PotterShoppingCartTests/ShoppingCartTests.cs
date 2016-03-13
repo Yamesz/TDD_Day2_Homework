@@ -213,7 +213,7 @@ namespace PotterShoppingCart.Tests
         
 
         [TestMethod]
-        public void 第一集買一本_第二三集各買兩本_價格應為270加180為460()
+        public void 第一集買一本_第二三集各買兩本_價格應為270加190為460()
         {
             //Arrange
             var bookList = new List<Book>(){
