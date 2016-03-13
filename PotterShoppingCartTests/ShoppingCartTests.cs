@@ -126,5 +126,46 @@ namespace PotterShoppingCart.Tests
             Assert.AreEqual(expected, actual);
         }
         
+        [TestMethod]
+        public void 一二三四五集各買了一本_價格應為375()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                new Book{
+                    ISBN=9573317249,
+                    Name="哈利波特 : 神秘的魔法石",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573317583,
+                    Name="哈利波特 : 消失的密室",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573318008,
+                    Name="哈利波特 : 阿茲卡班的逃犯",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573318318,
+                    Name="哈利波特 : 火盃的考驗",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573319861,
+                    Name="哈利波特 : 鳳凰會的密令",
+                    Price=100
+                }         
+            };
+
+            var expected = 375;
+            var target = new ShoppingCart();
+   
+            //Act
+            int actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
