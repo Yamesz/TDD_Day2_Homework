@@ -10,7 +10,14 @@ namespace PotterShoppingCart
     {
         public int SubtotalGet(List<Book> bookList)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            foreach (var item in bookList)
+            {
+                result +=item.Price;
+            }
+
+            return result;
         }
     }
 }
