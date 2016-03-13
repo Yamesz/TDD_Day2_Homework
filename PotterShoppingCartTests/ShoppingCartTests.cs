@@ -169,8 +169,6 @@ namespace PotterShoppingCart.Tests
             Assert.AreEqual(expected, actual);
         }
 
-
-
         [TestMethod]
         public void 一二集各買一本_第三集買兩本_價格應為270加100為370()
         {
@@ -207,10 +205,6 @@ namespace PotterShoppingCart.Tests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
-
-
-        
 
         [TestMethod]
         public void 第一集買一本_第二三集各買兩本_價格應為270加190為460()
