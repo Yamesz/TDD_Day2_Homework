@@ -17,8 +17,8 @@ namespace PotterShoppingCart.Tests
             var bookList = new List<Book>();
             bookList.Add(new Book
             {
-                ISBN = 9573317249,
-                Name = "哈利波特 : 神秘的魔法石",
+                ISBN = 1,
+                Name = "七龍珠1",
                 Price = 100
             });
             var expected = 100d;
@@ -32,270 +32,355 @@ namespace PotterShoppingCart.Tests
         }
 
         [TestMethod]
-        public void 第一集買一本_第二集買一本_價格應為190()
+        public void 第一集買一本_第二集買一本_價格應為180()
         {
             //Arrange
             var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                }           
-            };
-
-            var expected = 190d;
-            var target = new ShoppingCart();
-
-            //Act
-            var actual = target.SubtotalGet(bookList);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void 一二三集各買一本_價格應為270()
-        {
-            //Arrange
-            var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                }          
-            };
-
-            var expected = 270d;
-            var target = new ShoppingCart();
-
-            //Act
-            var actual = target.SubtotalGet(bookList);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void 一二三四集各買一本_價格應為320()
-        {
-            //Arrange
-            var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318318,
-                    Name="哈利波特 : 火盃的考驗",
-                    Price=100
-                }          
-            };
-
-            var expected = 320d;
-            var target = new ShoppingCart();
-
-            //Act
-            var actual = target.SubtotalGet(bookList);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void 一二三四五集各買了一本_價格應為375()
-        {
-            //Arrange
-            var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318318,
-                    Name="哈利波特 : 火盃的考驗",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573319861,
-                    Name="哈利波特 : 鳳凰會的密令",
-                    Price=100
-                }         
-            };
-
-            var expected = 375d;
-            var target = new ShoppingCart();
-
-            //Act
-            var actual = target.SubtotalGet(bookList);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void 一二集各買一本_第三集買兩本_價格應為270加100為370()
-        {
-            //Arrange
-            var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                }          
-            };
-
-            var expected = 370d;
-            var target = new ShoppingCart();
-
-            //Act
-            var actual = target.SubtotalGet(bookList);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void 第一集買一本_第二三集各買兩本_價格應為270加190為460()
-        {
-            //Arrange
-            var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                }          
-            };
-
-            var expected = 460d;
-            var target = new ShoppingCart();
-
-            //Act
-            var actual = target.SubtotalGet(bookList);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void 第一集買一本_第二三集各買兩本_買一本漫畫書_價格應為270加190加40加40加50為590()
-        {
-            //Arrange
-            var bookList = new List<Book>(){
-                new Book{
-                    ISBN=9573317249,
-                    Name="哈利波特 : 神秘的魔法石",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573317583,
-                    Name="哈利波特 : 消失的密室",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                },
-                new Book{
-                    ISBN=9573318008,
-                    Name="哈利波特 : 阿茲卡班的逃犯",
-                    Price=100
-                },
                 new Book{
                     ISBN=1,
-                    Name="漫畫書",
-                    Price=40
-                },
-                new Book{
-                    ISBN=1,
-                    Name="漫畫書",
-                    Price=40
+                    Name="七龍珠1",
+                    Price=100
                 },
                 new Book{
                     ISBN=2,
-                    Name="漫畫書",
-                    Price=50
-                }           
+                    Name="七龍珠2",
+                    Price=100
+                },
             };
 
-            var expected = 590d;
+            var expected = 180d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 一二三集各買一本_價格應為240()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+              new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+            };
+
+            var expected = 240d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 一二三四集各買一本_價格應為280()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+                new Book{
+                    ISBN=4,
+                    Name="七龍珠4",
+                    Price=100
+                },
+            };
+
+            var expected = 280d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 一二三四五集各買了一本_價格應為350()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                 new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+                new Book{
+                    ISBN=4,
+                    Name="七龍珠4",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+            };
+
+            var expected = 350d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 買鬼滅1到3_七龍珠1到5_價格應為950()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+               new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+                  new Book{
+                    ISBN=4,
+                    Name="七龍珠4",
+                    Price=100
+                },
+                   new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                     new Book{
+                    ISBN=6,
+                    Name="鬼滅之刃1",
+                    Price=200
+                },
+                new Book{
+                    ISBN=7,
+                    Name="鬼滅之刃2",
+                    Price=200
+                },
+                new Book{
+                    ISBN=8,
+                    Name="鬼滅之刃3",
+                    Price=200
+                },
+            };
+
+            var expected = 950d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 七龍珠1到3各2本_價格應為480()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+               new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                 new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                  new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+               new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+            };
+
+            var expected = 480d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 七龍珠1X2_七龍珠2X2_七龍珠3X2_七龍珠4X3_七龍珠5X10_鬼滅1X1_價格應為1780()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                 new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                 new Book{
+                    ISBN=1,
+                    Name="七龍珠1",
+                    Price=100
+                },
+                new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                  new Book{
+                    ISBN=2,
+                    Name="七龍珠2",
+                    Price=100
+                },
+                new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+               new Book{
+                    ISBN=3,
+                    Name="七龍珠3",
+                    Price=100
+                },
+               new Book{
+                    ISBN=4,
+                    Name="七龍珠4",
+                    Price=100
+                },
+                  new Book{
+                    ISBN=4,
+                    Name="七龍珠4",
+                    Price=100
+                },
+                new Book{
+                    ISBN=4,
+                    Name="七龍珠4",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                new Book{
+                    ISBN=5,
+                    Name="七龍珠5",
+                    Price=100
+                },
+                     new Book{
+                    ISBN=6,
+                    Name="鬼滅之刃1",
+                    Price=200
+                },
+            };
+
+            var expected = 1780d;
             var target = new ShoppingCart();
 
             //Act

@@ -17,18 +17,17 @@ namespace PotterShoppingCart
         {
             //建立促銷書購買清單
             PromotionList = new List<long>();
-            PromotionList.Add(9573317249);
-            PromotionList.Add(9573317583);
-            PromotionList.Add(9573318008);
-            PromotionList.Add(9573318318);
-            PromotionList.Add(9573319861);
+            PromotionList.Add(1);
+            PromotionList.Add(2);
+            PromotionList.Add(3);
+            PromotionList.Add(4);
+            PromotionList.Add(5);
 
             discountList = new Dictionary<int, double>();
             discountList.Add(1, 1);
-            discountList.Add(2, 0.95);
-            discountList.Add(3, 0.9);
-            discountList.Add(4, 0.8);
-            discountList.Add(5, 0.75);
+            discountList.Add(2, 0.9);
+            discountList.Add(3, 0.8);
+            discountList.Add(4, 0.7);
         }
         /// <summary>
         /// 取得購物車總價
@@ -46,46 +45,39 @@ namespace PotterShoppingCart
                                             Price = g.First().Price,
                                             Quantity = g.Count() 
                                         });
-            //分出特價書 非特價書
+            //紅標書
             var promotionBookList = groupBookList.Where(x=>PromotionList.Contains(x.ISBN)).ToList();
+            //非紅標書
             var nonPromotionBookList = groupBookList.Where(x=>!PromotionList.Contains(x.ISBN)).ToList();
-
+            //非紅標書可直接算小計
             nonPromotionSubtotal = nonPromotionBookList.Sum(x=>x.Price * x.Quantity);
+            //找出紅標書單本買最多的數量
             var maxBooksCount = promotionBookList.Max(x=>x.Quantity);
-            //取得促銷書小計
-            //promotionSubtotal = PromotionSubtotalGet(promotionSubtotal, PromotionList);
+            //最大折扣的書本數量
+            var maxDistcountQuantity = discountList.Max(x => x.Key);
+
+            //取得紅標書小計
             for (int loop = 0; loop < maxBooksCount; loop++)
             {
-                var a = promotionBookList.Where(x=>x.Quantity > 0 );
-                var total = a.Sum(x=>x.Price);
-                var quantity = a.Count();
+                //找出剩餘數量大於0的有效紅標書
+                var validList = promotionBookList.Where(x=>x.Quantity > 0 );
+                //還沒折扣的總價
+                var total = validList.Sum(x=>x.Price);
+                //有效紅標書的總類數量
+                var quantity = validList.Count();
+                //若超過最折扣的數量 就只能是最大折扣
+                if (quantity > maxDistcountQuantity) quantity = maxDistcountQuantity;
                 double discount = this.discountList[quantity];
-               
+                //算出折扣後價錢
                 promotionSubtotal += total * discount;
-                foreach (var item in a)
+                //將每個已經折扣後書 給扣掉數量
+                foreach (var book in validList)
                 {
-                    promotionBookList.Where(x=>x.ISBN == item.ISBN).First().Quantity--;
+                    promotionBookList.Where(x=>x.ISBN == book.ISBN).First().Quantity--;
                 }
                 
             }
-            //while (promotionBookList.c)
-            //{
-            //    var a = promotionBookList.Where(x=>x.Quantity > 0 );
-            //    var total = a.Sum(x=>x.Price);
-            //    var quantity = a.Count();
-
-            //    double discount;
-
-            //    discountList.TryGetValue(quantity, out discount);
-
-            //    promotionSubtotal += total * discount;
-
-            //    promotionBookList.ForEach(x=>--x.Quantity);
-                
-                
-            //}
-
-            //促銷書小計 + 非促銷書小計
+            //紅標書小計 + 非紅標書小計 
             return promotionSubtotal + nonPromotionSubtotal;
         }
 
