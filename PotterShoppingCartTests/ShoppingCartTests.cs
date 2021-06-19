@@ -21,11 +21,11 @@ namespace PotterShoppingCart.Tests
                 Name = "哈利波特 : 神秘的魔法石",
                 Price = 100
             });
-            var expected = 100;
+            var expected = 100d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -48,11 +48,11 @@ namespace PotterShoppingCart.Tests
                 }           
             };
 
-            var expected = 190;
+            var expected = 190d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -80,11 +80,11 @@ namespace PotterShoppingCart.Tests
                 }          
             };
 
-            var expected = 270;
+            var expected = 270d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -117,11 +117,11 @@ namespace PotterShoppingCart.Tests
                 }          
             };
 
-            var expected = 320;
+            var expected = 320d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -159,11 +159,11 @@ namespace PotterShoppingCart.Tests
                 }         
             };
 
-            var expected = 375;
+            var expected = 375d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -196,11 +196,11 @@ namespace PotterShoppingCart.Tests
                 }          
             };
 
-            var expected = 370;
+            var expected = 370d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -238,11 +238,68 @@ namespace PotterShoppingCart.Tests
                 }          
             };
 
-            var expected = 460;
+            var expected = 460d;
             var target = new ShoppingCart();
 
             //Act
-            int actual = target.SubtotalGet(bookList);
+            var actual = target.SubtotalGet(bookList);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 第一集買一本_第二三集各買兩本_買一本漫畫書_價格應為270加190加40加40加50為590()
+        {
+            //Arrange
+            var bookList = new List<Book>(){
+                new Book{
+                    ISBN=9573317249,
+                    Name="哈利波特 : 神秘的魔法石",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573317583,
+                    Name="哈利波特 : 消失的密室",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573317583,
+                    Name="哈利波特 : 消失的密室",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573318008,
+                    Name="哈利波特 : 阿茲卡班的逃犯",
+                    Price=100
+                },
+                new Book{
+                    ISBN=9573318008,
+                    Name="哈利波特 : 阿茲卡班的逃犯",
+                    Price=100
+                },
+                new Book{
+                    ISBN=1,
+                    Name="漫畫書",
+                    Price=40
+                },
+                new Book{
+                    ISBN=1,
+                    Name="漫畫書",
+                    Price=40
+                },
+                new Book{
+                    ISBN=2,
+                    Name="漫畫書",
+                    Price=50
+                }           
+            };
+
+            var expected = 590d;
+            var target = new ShoppingCart();
+
+            //Act
+            var actual = target.SubtotalGet(bookList);
 
             //Assert
             Assert.AreEqual(expected, actual);

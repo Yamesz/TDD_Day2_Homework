@@ -12,4 +12,11 @@ namespace PotterShoppingCart
         public long ISBN { get; set; }
         public string Name { get; set; }
     }
+
+     public class BookCart
+    {
+        public int Price { get; set; }
+        public long ISBN { get; set; }
+        public int Quantity { get; set; }
+    }
 }
